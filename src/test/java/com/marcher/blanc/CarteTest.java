@@ -49,13 +49,19 @@ public class CarteTest {
         // Calculer_une_marche_de_HEI_à_ESTI
         Marche marche = Carte.getMarche(carte, hei, esti);
 
-        // Vérifier_que_la_marche_commence_à_HEI_et_se_termine_à_ESTI
+        //teste_pour_que_le_chemin_ne_pas_null/vide
         assertNotNull(marche);
         assertFalse(marche.getListeLieuOrdonnees().isEmpty());
+
+        // Vérifier_que_la_marche_commence_à_HEI_et_se_termine_à_ESTI
         assertEquals(hei, marche.getListeLieuOrdonnees().get(0).getLieu1());
         assertEquals(esti, marche.getListeLieuOrdonnees().get(marche.getListeLieuOrdonnees().size() - 1).getLieu2());
 
-        // affichier_nos_chemin_a_la_console
+        // le_chemin_doivent_passer_3_lieu_minimum
+        assertTrue(marche.getListeLieuOrdonnees().size() >= 3);
+
+
+        // affichier_nos_chemin_vers_a_la_distination_sur_notre_console
         marche.printMarche();
 
     }

@@ -1,4 +1,4 @@
-package com.marcher.blanc.location;
+package com.marcher.blanc.localisation;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

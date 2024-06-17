@@ -1,9 +1,9 @@
 package com.marcher.blanc;
 
-import com.marcher.blanc.location.Carte;
-import com.marcher.blanc.location.Lieu;
-import com.marcher.blanc.location.LieuComposer;
-import com.marcher.blanc.location.Marche;
+import com.marcher.blanc.localisation.Carte;
+import com.marcher.blanc.localisation.Lieu;
+import com.marcher.blanc.localisation.LieuComposer;
+import com.marcher.blanc.localisation.Marche;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

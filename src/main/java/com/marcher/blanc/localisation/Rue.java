@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Rue {
+    private String name;
     private Lieu lieu1;
     private Lieu lieu2;
 }

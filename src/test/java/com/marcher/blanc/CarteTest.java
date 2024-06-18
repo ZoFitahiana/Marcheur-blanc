@@ -28,25 +28,25 @@ public class CarteTest {
 
         // Créer_les_lieux_composés_selon_le_schéma_de_notre_carte
         List<Rue> rue = new ArrayList<>();
-        rue.add(new Rue(marais,seko));
-        rue.add(new Rue(seko,marais));
-        rue.add(new Rue(seko,hei));
-        rue.add(new Rue(hei,seko));
-        rue.add(new Rue(hei,pullman));
-        rue.add(new Rue(pullman,hei));
-        rue.add(new Rue(hei,balancoir));
-        rue.add(new Rue(balancoir,hei));
-        rue.add(new Rue(pullman,nexta));
-        rue.add(new Rue(nexta,pullman));
-        rue.add(new Rue(pullman,balancoir));
-        rue.add(new Rue(balancoir,pullman));
-        rue.add(new Rue(balancoir,esti));
-        rue.add(new Rue(balancoir,boulevard));
-        rue.add(new Rue(boulevard,balancoir));
-        rue.add(new Rue(boulevard,esti));
+        rue.add(new Rue("pas de nom",marais,seko));
+        rue.add(new Rue("pas de nom",seko,marais));
+        rue.add(new Rue("pas de nom",seko,hei));
+        rue.add(new Rue("pas de nom",hei,seko));
+        rue.add(new Rue("Andriantsoharana",hei,pullman));
+        rue.add(new Rue("Andriantsoharana",pullman,hei));
+        rue.add(new Rue("pas de rua",hei,balancoir));
+        rue.add(new Rue("pas de rue",balancoir,hei));
+        rue.add(new Rue("pas de rue",pullman,nexta));
+        rue.add(new Rue("pas de rue",nexta,pullman));
+        rue.add(new Rue("rue ranaivo",pullman,balancoir));
+        rue.add(new Rue("rue ranaivo",balancoir,pullman));
+        rue.add(new Rue("pas de rue",balancoir,esti));
+        rue.add(new Rue("pas de rue",balancoir,boulevard));
+        rue.add(new Rue("pas de rue",boulevard,balancoir));
+        rue.add(new Rue("pas de rue",boulevard,esti));
 
         // Créer_notre_chemin_possible_dans_cart
-        Carte cheminPossible = new Carte(rue);
+        var cheminPossible = new Carte(rue);
 
         // Calculer_une_marche_de_HEI_à_ESTI
         Itineraire itineraire = Itineraire.getIteneraire(cheminPossible, hei, esti);

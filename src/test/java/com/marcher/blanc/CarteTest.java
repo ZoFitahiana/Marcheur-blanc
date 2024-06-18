@@ -1,14 +1,16 @@
 package com.marcher.blanc;
 
-import com.marcher.blanc.localisation.Carte;
+import com.marcher.blanc.localisation.Marcheur;
+import com.marcher.blanc.localisation.carte.Carte;
 import com.marcher.blanc.localisation.Lieu;
-import com.marcher.blanc.localisation.LieuComposer;
-import com.marcher.blanc.localisation.Marche;
+import com.marcher.blanc.localisation.Rue;
+import com.marcher.blanc.localisation.Itineraire;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.marcher.blanc.localisation.Itineraire.getIteneraire;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CarteTest {
@@ -25,44 +27,44 @@ public class CarteTest {
         Lieu nexta = new Lieu("Nexta");
 
         // Créer_les_lieux_composés_selon_le_schéma_de_notre_carte
-        List<LieuComposer> lieux = new ArrayList<>();
-        lieux.add(new LieuComposer(marais,"pas rue",seko));
-        lieux.add(new LieuComposer(seko,"pas de rue",marais));
-        lieux.add(new LieuComposer(seko,"pas rue",hei));
-        lieux.add(new LieuComposer(hei,"pas rue",seko));
-        lieux.add(new LieuComposer(hei,"rue andriatsiharana",pullman));
-        lieux.add(new LieuComposer(pullman,"rue andriantsihanra",hei));
-        lieux.add(new LieuComposer(hei,"pas rue",balancoir));
-        lieux.add(new LieuComposer(balancoir,"pas de rue",hei));
-        lieux.add(new LieuComposer(pullman,"pas rue",nexta));
-        lieux.add(new LieuComposer(nexta,"pas rue",pullman));
-        lieux.add(new LieuComposer(pullman,"rue ranaivo",balancoir));
-        lieux.add(new LieuComposer(balancoir,"rue ranaivo",pullman));
-        lieux.add(new LieuComposer(balancoir,"pas rue",esti));
-        lieux.add(new LieuComposer(balancoir,"pas rue",boulevard));
-        lieux.add(new LieuComposer(boulevard,"pas rue ",balancoir));
-        lieux.add(new LieuComposer(boulevard,"pas de rue ",esti));
+        List<Rue> rue = new ArrayList<>();
+        rue.add(new Rue(marais,seko));
+        rue.add(new Rue(seko,marais));
+        rue.add(new Rue(seko,hei));
+        rue.add(new Rue(hei,seko));
+        rue.add(new Rue(hei,pullman));
+        rue.add(new Rue(pullman,hei));
+        rue.add(new Rue(hei,balancoir));
+        rue.add(new Rue(balancoir,hei));
+        rue.add(new Rue(pullman,nexta));
+        rue.add(new Rue(nexta,pullman));
+        rue.add(new Rue(pullman,balancoir));
+        rue.add(new Rue(balancoir,pullman));
+        rue.add(new Rue(balancoir,esti));
+        rue.add(new Rue(balancoir,boulevard));
+        rue.add(new Rue(boulevard,balancoir));
+        rue.add(new Rue(boulevard,esti));
 
-        // Créer_notre_carte
-        Carte carte = new Carte(lieux);
+        // Créer_notre_chemin_possible_dans_cart
+        Carte cheminPossible = new Carte(rue);
 
         // Calculer_une_marche_de_HEI_à_ESTI
-        Marche marche = Carte.getMarche(carte, hei, esti);
+        Itineraire itineraire = Itineraire.getIteneraire(cheminPossible, hei, esti);
 
         //teste_pour_que_le_chemin_ne_pas_null/vide
-        assertNotNull(marche);
-        assertFalse(marche.getListeLieuOrdonnees().isEmpty());
+        assertNotNull(itineraire);
 
-        // Vérifier_que_la_marche_commence_à_HEI_et_se_termine_à_ESTI
-        assertEquals(hei, marche.getListeLieuOrdonnees().get(0).getLieu1());
-        assertEquals(esti, marche.getListeLieuOrdonnees().get(marche.getListeLieuOrdonnees().size() - 1).getLieu2());
+        // Vérifier_que_la_itineraire_commence_à_HEI_et_se_termine_à_ESTI
+        assertEquals(hei, itineraire.getListeRue().get(0).getLieu1());
+        assertEquals(esti, itineraire.getListeRue().get(itineraire.getListeRue().size() - 1).getLieu2());
 
         // le_chemin_doivent_passer_3_lieu_minimum
-        assertTrue(marche.getListeLieuOrdonnees().size() >= 3);
+        assertTrue(itineraire.getListeRue().size() >= 3);
 
 
         // affichier_nos_chemin_vers_a_la_distination_sur_notre_console
-        marche.printMarche();
+        Marcheur David = new Marcheur("David","blanc");
+        System.out.println(David.Marche(itineraire));
 
     }
 

@@ -7,8 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class LieuComposer {
+public class Rue {
     private Lieu lieu1;
-    private String rue;
     private Lieu lieu2;
 }
